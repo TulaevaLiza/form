@@ -15,7 +15,7 @@ display: function() {
 	console.log(this.email);
 	console.log(this.phone);
 }
-}
+};
 
 MyForm.getData();
 MyForm.display();
