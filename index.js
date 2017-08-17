@@ -4,6 +4,25 @@ $(document).ready(function() {
 	var error_fio =0, error_email = 0, error_phone =0, error = 0 ;
 	var url="";
 
+	var MyForm = {
+		getForm: function() {
+			this.fio=$("#fio");
+			this.email=$("#email");
+			this.phone=$("#phone");
+			this.submit=$("#submitButton");
+			console.log(this);
+		},
+		clearForm: function () {
+			this.fio.val("");
+			this.email.val("");
+			this.phone.val("");
+			this.submit.removeAttr("disabled");	
+		}
+	}
+
+MyForm.getForm();
+MyForm.clearForm();
+/*
 	$('#fio').val("");
 	$('#email').val("");
 	$('#phone').val("");
@@ -17,7 +36,7 @@ $(document).ready(function() {
 			$(this).next().remove();
 		}
 		error_fio=0;
-		var fio=$(this).val().replace(/\s*$/,"").replace(/^\s*/,"");
+		var fio=$(this).val().replace(/\s*$/,"").replace(/^\s+/,"");
 		var x=fio.split(" ");
 		if(x.length!=3) {
 			$(this).after("<div class='bg-warning error'>ФИО должно содержать три слова</div>");
@@ -30,7 +49,7 @@ $(document).ready(function() {
 		if($(this).next().hasClass('error')) {
 			$(this).next().remove();
 		}
-		var email=$(this).val().replace(/\s*$/,"").replace(/^\s*/,"");		
+		var email=$(this).val().replace(/\s*$/,"").replace(/^\s+/,"");		
 				
 		error_email=0;
 		if(!emailtmpl.test(email)) {
@@ -45,7 +64,7 @@ $(document).ready(function() {
 			$(this).next().remove();
 		}
 		error_phone=0;
-		var phone=$(this).val().replace(/\s*$/,"").replace(/^\s*/,"");		
+		var phone=$(this).val().replace(/\s*$/,"").replace(/^\s+/,"");		
 		if(!phonetmpl.test(phone)) {
 			$(this).after("<div class='bg-warning error'>Введите номер телефона в формате +7(999)999-99-99</div>");
 			error_phone=1;			
@@ -69,7 +88,7 @@ $(document).ready(function() {
 	});
 
 	$('#submitButton').click(function() {
-		if(!$('#fio').val().replace(/\s*$/,"").replace(/^\s*/,"") || !$('#email').val().replace(/\s*$/,"").replace(/^\s*/,"") || !$('#phone').val().replace(/\s*$/,"").replace(/^\s*/,"")) {
+		if(!$('#fio').val().replace(/\s*$/,"").replace(/^\s+/,"") || !$('#email').val().replace(/\s*$/,"").replace(/^\s+/,"") || !$('#phone').val().replace(/\s*$/,"").replace(/^\s+/,"")) {
 			error=1;
 		}
 		else if(error_fio || error_email || error_phone) {
@@ -116,4 +135,5 @@ $(document).ready(function() {
    
 
 	});
+	*/
 });
